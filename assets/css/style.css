@@ -1,43 +1,132 @@
-*{
+/*   LIMPIEZA DEL LIENZA   */
+* {
     margin: 0px;
     padding: 0px;
 }
 
-body{
+/*   LAYOUT MOBILE FIRST   */
+body {
     background-color: #fff;
 }
 
-.wrap-main{
+.wrap-main {
     display: grid;
-    flex-direction: column;
-    border: 1px solid black;
+    height: 100svh;
+    grid-template-rows: 1fr 1fr 9fr 1fr;
+    grid-template-areas:
+        "nav"
+        "aside"
+        "main"
+        "footer";
 }
 
-.aside{
-    border: 1px solid black;
-    background-color: cornflowerblue;
-    height: 100px;
+nav {
+    grid-area: nav;
+    background-color: #0037a1;
+    padding: 10px;
+    color: white;
 }
 
-.header{
-    border:1px solid black;
-    background-color: cadetblue;
-    height: 100px;
+aside {
+    grid-area: aside;
+    background-color: coral;
+    padding: 10px;
+    color: white;
 }
 
-.orderby{
-    width: 100%;
-    background-color: aqua;
+main {
+    grid-area: main;
+    height: 100%;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 1fr;
 }
 
-.main{
-    border: 1px solid black;
-    background-color: darkkhaki;
-    height: 100px;
+footer {
+    grid-area: footer;
+    background-color: #d02a1e;
+    padding: 10px;
+    color: white;
 }
 
-.footer{
-    border:1px solid black;
-    background-color: darkslateblue;
-    height: 100px;
+.gallery {
+    /*display: grid;
+    justify-items: center;
+    align-items: center;*/
+    padding: 1px;
+
+}
+
+.cards {
+    /*border: 1px solid black;*/
+    box-shadow: 5px 5px 15px #9c9b9b;
+    object-fit: contain;
+    margin: 30px;
+}
+
+.cards-img {
+    /*border: 1px solid black;*/
+    padding: 30px;
+    text-align: center;
+}
+
+.cards-body {
+    /*border: 1px solid black;*/
+    text-align: center;
+}
+
+.description {
+    /*border: 1px solid black;*/
+    padding: 5px;
+}
+
+.cards-btn {
+    /*border: 1px solid black;*/
+    padding: 5px;
+    text-align: center;
+}
+
+.btn-details {
+    background-color: #3e7af3;
+    color: white;
+    border-radius: 5px;
+    border-style: none;
+    height: 30px;
+    width: 100px;
+
+}
+
+/*   -----   MediaQueries   -----   */
+
+/*      DISPOSITIVOS TABLET -- Pantallas menos de 576 pixeles       */
+@media (min-width: 576px) {
+    .wrap-main {
+        grid-template-areas:
+            "nav nav"
+            "aside main"
+            "aside main"
+            "footer footer";
+        grid-template-columns: 1fr 5fr;
+    }
+
+    main {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/*      DISPOSITIVOS DESKTOP -- Pantallas menos de 992 pixeles      */
+@media (min-width: 992px) {
+    .wrap-main {
+        grid-template-rows: 1fr 1fr 8fr 2fr;
+        grid-template-areas:
+            "nav aside"
+            "nav main"
+            "nav main"
+            "footer main";
+        grid-template-columns: 1fr 5fr;
+    }
+
+    main {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
