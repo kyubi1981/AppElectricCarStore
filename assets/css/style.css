@@ -13,11 +13,12 @@ body {
 .wrap-main {
     display: grid;
     height: 100svh;
-    grid-template-rows: 1fr 1fr 9fr 1fr;
+    grid-template-rows: 1fr 1fr 8fr 1fr 1fr;
     grid-template-areas:
         "nav"
         "aside"
         "main"
+        "paginador"
         "footer";
 }
 
@@ -28,7 +29,22 @@ nav {
     color: white;
 }
 
+.opciones {
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    align-items: center;
+    margin-right: 40px;
+    gap: 1rem;
+}
+
+.opciones a {
+    text-decoration: none;
+    color: white;
+}
+
 .menu {
+    border: 1px solid black;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -70,16 +86,18 @@ aside {
     border: none;
     border-radius: 5px;
     color: #6a6969;
+    margin-top: 5px;
 }
 
 /***************************************/
 
 main {
     grid-area: main;
-    height: 100%;
-    overflow-y: auto;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: auto;
+    height: 95%;
+    /* lo dejo en 95% para dejar espacio al paginador */
+    overflow-y: auto;
 }
 
 footer {
@@ -111,9 +129,60 @@ footer {
 
 .gallery {
     display: grid;
-    grid-template-columns: auto;
+    grid-template-columns: 1fr;
+    justify-content: center;
     margin: 10px;
 }
+
+.paginador {
+    /*border: 1px solid black;*/
+    grid-area: paginador;
+    display: grid;
+    grid-template-columns: auto;
+    width: 96%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.paginas {
+    /*border: 1px solid black;*/
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 5px 5px 15px #9c9b9b;
+    color: #3e7af3;
+}
+
+.f-izq {
+    border: 1px solid rgb(167, 164, 164);
+}
+
+.uno {
+    border: 1px solid rgb(167, 164, 164);
+    text-align: center;
+    align-content: center;
+    width: 2rem;
+}
+
+.dos {
+    border: 1px solid rgb(167, 164, 164);
+    text-align: center;
+    align-content: center;
+    width: 2rem;
+}
+
+.tres {
+    border: 1px solid rgb(167, 164, 164);
+    text-align: center;
+    align-content: center;
+    width: 2rem;
+}
+
+.f-der {
+    border: 1px solid rgb(167, 164, 164);
+}
+
+/******************************************/
 
 .cards {
     /*border: 1px solid black;*/
@@ -154,17 +223,25 @@ footer {
 
 }
 
-/*   -----   MediaQueries   -----   */
+
+
+
+/************************************
+**   -----   MediaQueries   -----  ** 
+************************************/
+
 
 /*      DISPOSITIVOS TABLET -- Pantallas menos de 576 pixeles       */
 @media (min-width: 576px) {
     .wrap-main {
+        grid-template-rows: 1fr 1fr 8fr 1fr 1fr;
         grid-template-areas:
             "nav nav"
             "aside main"
             "aside main"
+            "aside paginador"
             "footer footer";
-        grid-template-columns: 1fr 5fr;
+        /* grid-template-columns: 1fr auto; */
     }
 
     main {
@@ -176,9 +253,19 @@ footer {
     }
 
     .gallery {
+        /*border: 1px solid black;*/
         display: grid;
-        grid-template-columns: auto auto;
-        margin: 10px;
+        grid-template-columns: 1fr 1fr;
+        align-content: center;
+        width: 100%;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+    .paginador {
+        width: 97%;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
 }
@@ -186,27 +273,64 @@ footer {
 /*      DISPOSITIVOS DESKTOP -- Pantallas menos de 992 pixeles      */
 @media (min-width: 992px) {
     .wrap-main {
-        grid-template-rows: 1fr 1fr 8fr 2fr;
+        grid-template-rows: 1fr 1fr 8fr 1fr 1fr;
         grid-template-areas:
-            "nav aside"
-            "nav main"
-            "nav main"
-            "footer main";
-        grid-template-columns: 1fr 5fr;
+            "nav aside aside"
+            "nav main main"
+            "nav main main"
+            "nav main main"
+            "footer paginador paginador";
+        /*grid-template-columns: 1fr 5fr;*/
     }
 
     main {
         grid-template-columns: repeat(3, 1fr);
     }
 
+    .material-symbols-outlined {
+        /*border: 1px solid white;*/
+        align-content: center;
+    }
+
+    .title-menu {
+        /*border: 1px solid black;*/
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
     .title-menu h4 {
-        /*margin-left: 10px;*/
-        font-size: xx-small;
+        align-content: center;
+        font-size: x-small;
     }
 
     .gallery {
+        /*border: 1px solid black;*/
         display: grid;
-        grid-template-columns: auto auto auto;
-        margin: 10px;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-items: center;
+        width: 100%;
+        margin-left: 20px;
+        margin-right: 20px;
+
+    }
+
+    .paginador {
+        width: 98%;
+        padding: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .paginas{
+        height: 25px;
+    }
+
+    .opciones{
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        
+
     }
 }
